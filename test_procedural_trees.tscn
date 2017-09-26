@@ -6,26 +6,6 @@
 
 [node name="procedural_tree" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 89.9635, 352.133 )
-
-[node name="procedural_tree1" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 188.759, 352.133 )
-
-[node name="procedural_tree2" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 251.988, 352.133 )
-
-[node name="procedural_tree3" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 323.12, 352.133 )
-
-[node name="procedural_tree4" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 402.157, 352.133 )
-
-[node name="procedural_tree5" parent="." instance=ExtResource( 1 )]
-
-transform/pos = Vector2( 465.385, 352.133 )
+transform/pos = Vector2( 519.224, 490.104 )
 
 
