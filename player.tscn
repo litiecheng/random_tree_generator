@@ -1,0 +1,293 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://dark_shader.tres" type="Shader" id=2]
+[ext_resource path="res://playerart/sballerLidle_strip6.png" type="Texture" id=3]
+[ext_resource path="res://playerart/sballerTrunRight_strip6.png" type="Texture" id=4]
+[ext_resource path="res://playerart/sballerHrunRight_strip6.png" type="Texture" id=5]
+[ext_resource path="res://playerart/sballerLrunRight_strip6.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "idle"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/legs:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rotate/legs:frame")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("rotate/body:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rotate/body:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("rotate/body:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -7, -19 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("rotate/head:transform/pos")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -43 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("rotate/legs:transform/pos")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, -6 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "run"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotate/legs:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("rotate/body:texture")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("rotate/head:texture")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("rotate/head:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("rotate/body:frame")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("rotate/legs:frame")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("rotate/legs:hframes")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("rotate/body:hframes")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("rotate/head:hframes")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("rotate/body:transform/pos")
+tracks/9/interp = 1
+tracks/9/imported = false
+tracks/9/keys = {
+"times": FloatArray( 0.3 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4, -30 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("rotate/head:transform/pos")
+tracks/10/interp = 1
+tracks/10/imported = false
+tracks/10/keys = {
+"times": FloatArray( 0.3 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, -53 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("rotate/legs:transform/pos")
+tracks/11/interp = 1
+tracks/11/imported = false
+tracks/11/keys = {
+"times": FloatArray( 0.3 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, -14 ) ]
+}
+
+[node name="player" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -2, -16 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="rotate" type="Node2D" parent="."]
+
+transform/pos = Vector2( 1, 4 )
+
+[node name="legs" type="Sprite" parent="rotate"]
+
+material/material = SubResource( 1 )
+transform/pos = Vector2( -3, -6 )
+texture = ExtResource( 3 )
+hframes = 6
+frame = 5
+
+[node name="body" type="Sprite" parent="rotate"]
+
+material/material = SubResource( 3 )
+transform/pos = Vector2( -7, -19 )
+texture = ExtResource( 4 )
+hframes = 6
+frame = 5
+
+[node name="head" type="Sprite" parent="rotate"]
+
+material/material = SubResource( 4 )
+transform/pos = Vector2( -8, -43 )
+texture = ExtResource( 5 )
+hframes = 6
+frame = 3
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/idle = SubResource( 6 )
+anims/run = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( -2, -16 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+

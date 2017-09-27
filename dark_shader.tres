@@ -1,0 +1,27 @@
+[gd_resource type="CanvasItemShader" format=1]
+
+[resource]
+
+_code = {
+"fragment": "vec4 c = tex( TEXTURE, UV );
+float a = c.a;
+float b =  ( c.r + c.g + c.b ) / 3.0;
+if( a > 0 )
+{
+	if( b < 0.91 )
+	{
+		COLOR = color( 0, 0, 0, 1 );
+	}
+	else
+	{
+		COLOR = color( 1, 1, 1, 1 );
+	}
+}
+",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+

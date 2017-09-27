@@ -2,27 +2,27 @@ tool
 extends Node2D
 
 # tree parameters
-var max_layers = 3
+export( int ) var max_layers = 4
+export( Color ) var polycolor = Color( 1, 1, 1, 1 ) #setget _set_polycolor
+export( Vector2 ) var trunc_height_range = Vector2( 130, 200 ) #setget _set_trunc_height_range
+export( Vector2 ) var trunc_basewidth_range = Vector2( 10, 20 ) #setget _set_trunc_basewidth_range
+export( Vector2 ) var trunc_topwidth_range = Vector2( 5, 10 ) #setget _set_trunc_topwidth_range
+export( Vector2 ) var trunc_topangle_range = Vector2( -50, 50 )
+export( Vector2 ) var trunc_angle_range = Vector2( -5, 5 )
+export( Vector2 ) var trunc_branches_range = Vector2( 2, 4 )
+export( bool ) var trunc_branch_on_top = true
 
-export( Vector2 ) var trunc_height_range = Vector2( 130, 200 ) setget _set_trunc_height_range
-var trunc_basewidth_range = Vector2( 10, 20 )
-var trunc_topwidth_range = Vector2( 5, 10 )
-var trunc_topangle_range = Vector2( -50, 50 )
-var trunc_angle_range = Vector2( -5, 5 )
-var trunc_branches_range = Vector2( 2, 4 )
-var trunc_branch_on_top = true
+export( Vector2 ) var branch_base_range = Vector2( 0.5, 1 )
+export( Vector2 ) var branch_angle_range = Vector2( 20, 25 )
+export( Vector2 ) var branch_length_range = Vector2( 0.6, 1.0 )
+export( Vector2 ) var branch_basewidth_range = Vector2( 1.3, 1.6 )
+export( Vector2 ) var branch_topwidth_range = Vector2( 0.3, 0.6 )
+export( Vector2 ) var branch_branches_range = Vector2( 2, 4 )
+export( int ) var branch_rotation_range = 30
+export( bool ) var branch_branch_on_top = true
 
-var branch_base_range = Vector2( 0.3, 1 )
-var branch_angle_range = Vector2( 20, 25 )
-var branch_length_range = Vector2( 0.6, 1.2 )
-var branch_basewidth_range = Vector2( 1.3, 1.6 )
-var branch_topwidth_range = Vector2( 0.3, 0.6 )
-var branch_branches_range = Vector2( 2, 4 )
-var branch_rotation_range = 30
-var branch_branch_on_top = true
-
-var mass_ratio = 0.5
-var dampenning = 0.999
+export( Vector2 ) var mass_ratio = 0.5
+export( Vector2 ) var dampenning = 0.999
 
 var trunc = null
 
@@ -65,17 +65,15 @@ class Branch:
 func _ready():
 	randomize()
 	_get_new_tree()
-	#_generate_tree()
-	if not get_tree().is_editor_hint():
+	#if not get_tree().is_editor_hint():
+	if get_parent().has_method( "get_wind" ):
+		print( "starting process" )
 		set_fixed_process( true )
 
 
 func _fixed_process( delta ):
 	# apply wind for a few seconds
-	if wind_timer > 0:
-		wind_timer -= delta
-		if wind_timer <= 0:
-			wind = 0
+	wind = get_parent().get_wind()
 	# update tree
 	_update_tree( delta )
 	
@@ -106,7 +104,8 @@ func _rotate_branch( branch, wind, delta, debug = false ):
 	var cur_angle = branch.polygon2d.get_rot()
 	var angle_delta = branch.angle - cur_angle
 	var force = angle_delta * mass * mass_ratio + wind 
-	
+	if branch.is_trunc:
+		force = angle_delta * 2 * mass * mass_ratio + wind 
 	branch.rot_vel += force * delta / mass
 	branch.rot_vel *= dampenning # dampening
 	cur_angle += branch.rot_vel * delta
@@ -126,7 +125,15 @@ func _rotate_branch( branch, wind, delta, debug = false ):
 func _set_trunc_height_range( val ):
 	trunc_height_range = val
 	_get_new_tree()
-
+func _set_trunc_basewidth_range( val ):
+	trunc_basewidth_range = val
+	_get_new_tree()
+func _set_trunc_topwidth_range( val ):
+	trunc_topwidth_range = val
+	_get_new_tree()
+func _set_polycolor( val ):
+	polycolor = val
+	_get_new_tree()
 
 func _get_new_tree():
 	if get_child_count() > 0:
@@ -142,7 +149,6 @@ func _clear_tree( node ):
 			n.queue_free()
 	node.queue_free()
 	return
-	pass
 
 
 
@@ -222,6 +228,7 @@ func _create_polygon2d( base_width, top_width, height ):
 	parray.append( Vector2( base_width / 2, 0 ) )
 	var p = Polygon2D.new()
 	p.set_polygon( parray )
+	p.set_color( polycolor )
 	return p
 
 
