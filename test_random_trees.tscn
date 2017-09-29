@@ -8,7 +8,7 @@
 [ext_resource path="res://player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://floor.png" type="Texture" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=1]
 
 shader/shader = ExtResource( 1 )
 shader/shading_mode = 0
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "values": [ 0, 0, 20, 20, 0, 0 ]
 }
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Label
 
@@ -179,7 +179,7 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="TextureFrame" type="TextureFrame" parent="ParallaxBackground/ParallaxLayer"]
 
-material/material = SubResource( 3 )
+material/material = SubResource( 1 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -357,7 +357,7 @@ margin/bottom = 20.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = SubResource( 1 )
+script/script = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }

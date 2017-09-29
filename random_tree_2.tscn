@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://random_tree_2.gd" type="Script" id=1]
+
+[node name="random_tree_2" type="Node2D"]
+
+transform/pos = Vector2( 389.604, 387.553 )
+script/script = ExtResource( 1 )
+max_layers = 4
+polycolor = Color( 1, 1, 1, 1 )
+trunc_height_range = Vector2( 130, 200 )
+trunc_basewidth_range = Vector2( 10, 20 )
+trunc_topwidth_range = Vector2( 5, 10 )
+trunc_topangle_range = Vector2( -50, 50 )
+trunc_angle_range = Vector2( -5, 5 )
+trunc_branches_range = Vector2( 2, 4 )
+trunc_branch_on_top = true
+branch_base_range = Vector2( 0.5, 1 )
+branch_angle_range = Vector2( 20, 25 )
+branch_length_range = Vector2( 0.6, 1 )
+branch_basewidth_range = Vector2( 1.3, 1.6 )
+branch_topwidth_range = Vector2( 0.3, 0.6 )
+branch_branches_range = Vector2( 2, 4 )
+branch_rotation_range = 30
+branch_branch_on_top = true
+mass_ratio = 0.5
+dampenning = 0.999
+
+

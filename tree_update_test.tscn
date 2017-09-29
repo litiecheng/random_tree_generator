@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://random_tree_2.tscn" type="PackedScene" id=1]
+
+[node name="tree_update_test" type="Node2D"]
+
+[node name="random_tree_2" parent="." instance=ExtResource( 1 )]
+
+max_layers = 3
+polycolor = Color( 0.449219, 0.194778, 0.194778, 1 )
+trunc_height_range = Vector2( 30, 40 )
+trunc_branches_range = Vector2( 2, 3 )
+
+
