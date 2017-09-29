@@ -10,10 +10,10 @@ export( Color ) var polycolor = Color( 1, 1, 1, 1 ) setget _set_polycolor
 export( Vector2 ) var trunc_height_range = Vector2( 130, 200 ) setget _set_trunc_height_range
 export( Vector2 ) var trunc_basewidth_range = Vector2( 10, 20 ) setget _set_trunc_basewidth_range
 export( Vector2 ) var trunc_topwidth_range = Vector2( 5, 10 ) setget _set_trunc_topwidth_range
-export( Vector2 ) var trunc_topangle_range = Vector2( -50, 50 )
-export( Vector2 ) var trunc_angle_range = Vector2( -5, 5 )
-export( Vector2 ) var trunc_branches_range = Vector2( 2, 4 )
-export( bool ) var trunc_branch_on_top = true
+export( Vector2 ) var trunc_topangle_range = Vector2( -50, 50 ) setget _set_trunc_topangle_range
+export( Vector2 ) var trunc_angle_range = Vector2( -5, 5 ) setget _set_trunc_angle_range
+export( Vector2 ) var trunc_branches_range = Vector2( 2, 4 ) setget _set_trunc_branches_range
+export( bool ) var trunc_branch_on_top = true setget _set_trunc_branch_on_top
 
 export( Vector2 ) var branch_base_range = Vector2( 0.5, 1 )
 export( Vector2 ) var branch_angle_range = Vector2( 20, 25 )
@@ -140,6 +140,23 @@ func _set_trunc_topwidth_range( val ):
 func _set_polycolor( val ):
 	polycolor = val
 	_get_new_tree()
+func _set_trunc_topangle_range( val ):
+	trunc_topangle_range = val
+	_get_new_tree()
+func _set_trunc_angle_range( val ):
+	trunc_angle_range = val
+	_get_new_tree()
+func _set_trunc_branches_range( val ):
+	trunc_branches_range = val
+	_get_new_tree()
+func _set_trunc_branch_on_top( val ):
+	trunc_branch_on_top = val
+	_get_new_tree()
+
+
+
+
+
 
 func _get_new_tree():
 	if get_child_count() > 0:
